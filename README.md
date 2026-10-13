@@ -1,36 +1,29 @@
-# Dual-Domain Predictive Analytics Platform (Logistic Regression)
+# ML Task 1: Logistic Regression on 2 Datasets
 
-An end-to-end machine learning web application built with Python and Scikit-Learn that solves two distinct classification problems: predicting **Student Academic Performance** and assessing **Heart Failure Risk**. The project features dual interactive frontends powered by **Gradio** and **Flask**.
+Datasets: Student Performance Factors (Pass/Fail) and Heart Failure Prediction.
 
----
-
-## 🚀 Key Features
-
-* **Student Performance Predictor**: Evaluates weekly study hours, attendance, previous scores, sleep hours, tutoring sessions, and motivational levels to predict academic success.
-* **Heart Disease Predictor**: Analyzes clinical markers like age, cholesterol, resting blood pressure, max heart rate, and chest pain types to estimate cardiovascular risk.
-* **Dual Frontend Interfaces**:
-  * **Gradio Dashboard**: A clean, multi-tab interface (`gr.TabbedInterface`) allowing instant testing of both models.
-  * **Flask Web App**: A lightweight, server-rendered web application for deployment and custom UI rendering.
-
----
-
-## 🛠️ Tech Stack
-
-* **Machine Learning**: Python, Scikit-Learn (`Pipeline`, `ColumnTransformer`, `StandardScaler`, `OneHotEncoder`, `LogisticRegression`), Pandas, NumPy.
-* **Model Persistence**: Joblib.
-* **Web Frameworks**: Gradio, Flask.
-
----
-
-## 📂 Project Structure
-
-```text
+## Folder
+```
 ML_Task1_LogisticRegression/
-│
-├── student_model.pkl        # Serialized student performance pipeline
-├── heart_model.pkl          # Serialized heart disease risk pipeline
-├── gradio_app.py            # Multi-tab Gradio interactive app
-├── requirements.txt         # Project dependencies
-└── flask_app/               # Flask backend deployment folder
-    ├── app.py               # Flask application routes
-    └── templates/           # HTML templates for Flask UI
+├── student_performance.ipynb   <- notebook 1
+├── heart_failure.ipynb         <- notebook 2
+├── gradio_app.py               <- Gradio UI (both models, one tab each)
+├── flask_app/
+│   ├── app.py                  <- Flask UI
+│   └── templates/ (index.html, form.html)
+├── student_model.pkl, heart_model.pkl
+├── StudentPerformanceFactors.csv   <- ADD THIS (your dataset)
+└── heart.csv                       <- ADD THIS (your dataset)
+```
+
+## Steps
+1. Copy your two CSV files into this folder (names must match the ones above).
+2. Open the folder in VS Code and select the same Python environment you used for your notebooks.
+3. Install packages once:  `pip install -r requirements.txt`
+4. Open each notebook and click **Run All**. Screenshot the outputs. This also re-creates the two `.pkl` files.
+5. Gradio:  `python gradio_app.py`  then open http://127.0.0.1:7860
+6. Flask:   `cd flask_app`  then  `python app.py`  then open http://127.0.0.1:5000
+
+## If you see an error about OneHotEncoder / `_infrequent_enabled`
+The `.pkl` files were made with a different scikit-learn version than the one running the apps.
+Run both notebooks again (Run All) in the same environment you use for the apps.
