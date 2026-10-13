@@ -24,6 +24,14 @@ ML_Task1_LogisticRegression/
 5. Gradio:  `python gradio_app.py`  then open http://127.0.0.1:7860
 6. Flask:   `cd flask_app`  then  `python app.py`  then open http://127.0.0.1:5000
 
-## If you see an error about OneHotEncoder / `_infrequent_enabled`
-The `.pkl` files were made with a different scikit-learn version than the one running the apps.
-Run both notebooks again (Run All) in the same environment you use for the apps.
+## Local Setup & Execution GuideClone or Extract the Project
+
+Open your project folder in your terminal or code editor (e.g., VS Code).   Install Dependencies
+Run the requirements installation command:   Bashpip install -r requirements.txt
+Launch the Gradio Interface
+Execute the interactive multi-tab dashboard:   Bashpython gradio_app.py
+Ctrl+Click the local URL generated in your terminal (http://127.0.0.1:7860) to test the models.   Launch the Flask Web Application
+Stop the Gradio server using Ctrl + C, then switch to the Flask directory and run the server:   Bashcd flask_app
+python app.py
+Open http://127.0.0.1:5000 in your web browser to interact with the custom web app.   
+
