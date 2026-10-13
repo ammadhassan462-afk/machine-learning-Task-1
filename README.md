@@ -1,4 +1,4 @@
-# ML Task 1: Logistic Regression on 2 Datasets
+# ML Task 1: LinearRegression on 2 Datasets
 
 Datasets: Student Performance Factors (Pass/Fail) and Heart Failure Prediction.
 
