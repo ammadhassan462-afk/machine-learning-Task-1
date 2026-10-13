@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ cfg.title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; }
+    .card { max-width: 480px; margin: 40px auto; background: #fff; padding: 25px 30px;
+            border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+    label { display: block; margin-top: 12px; font-weight: bold; font-size: 14px; }
+    input, select { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    button { margin-top: 20px; width: 100%; padding: 10px; background: #2563eb;
+             color: #fff; border: 0; border-radius: 6px; font-size: 16px; cursor: pointer; }
+    .result { margin-top: 20px; padding: 15px; background: #e0f2fe; border-radius: 6px; text-align: center; }
+    a { font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a href="/">&larr; Home</a>
+    <h2>{{ cfg.title }}</h2>
+    <form method="POST">
+      {% for f in cfg.fields %}
+        <label>{{ f.label }}</label>
+        {% if f.options %}
+          <select name="{{ f.name }}">
+            {% for o in f.options %}
+              <option value="{{ o }}" {% if values.get(f.name) == o %}selected{% endif %}>{{ o }}</option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <input type="number" step="any" name="{{ f.name }}" required
+                 value="{{ values.get(f.name, f.default) }}">
+        {% endif %}
+      {% endfor %}
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+      <div class="result">
+        <h3>{{ result }}</h3>
+        <p>Probability: {{ "%.1f"|format(prob * 100) }}%</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
